@@ -15,10 +15,12 @@ class Patient
   end
   
   def doctors
-    appointments.collect {|appointment| appointment.doctor}
+    Appointment.all.map do |appointment|
+      appointment.doctor
+    end
   end
   
-  def new_appointment(doctor, date)
+  def new_appointment(date, doctor)
     Appointment.new(date, self, doctor)
   end
   
